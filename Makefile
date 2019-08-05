@@ -2,7 +2,7 @@ XDG_CONFIG_HOME ?= $(HOME)/.config
 ZSH_CUSTOM ?= ~/.oh-my-zsh/custom
 
 deps:
-	sudo apt install -y\
+	sudo apt install -y \
 		zsh \
 		curl \
 		tmux \
@@ -20,7 +20,7 @@ deps:
 tmux:
 	mkdir -p ~/.tmux/themes
 	git clone https://github.com/srcery-colors/srcery-tmux/ \
-		~/.tmux/themes/srcery-tmux
+		~/.tmux/themes/srcery-tmux || true
 	ln -fs `pwd`/tmux/tmux.conf $(HOME)/.tmux.conf
 	ln -fs `pwd`/tmux/tnew.sh $(HOME)/tnew.sh
 
@@ -35,21 +35,17 @@ i3:
 .PHONY: zsh
 zsh:
 	ln -fs `pwd`/zsh/zshrc ~/.zshrc
-	ln -fs `pwd`/zsh/custom/themes/oxide.zsh-theme ~/.oh-my-zsh/custom/themes/oxide.zsh-theme
+	ln -fs `pwd`/zsh/p10k.zsh ~/.p10k.zsh
 	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git \
 		$(ZSH_CUSTOM)/plugins/zsh-syntax-highlighting || true
 	git clone https://github.com/zsh-users/zsh-autosuggestions \
 		$(ZSH_CUSTOM)/plugins/zsh-autosuggestions || true
+	git clone https://github.com/romkatv/powerlevel10k.git \
+		$(ZSH_CUSTOM)/themes/powerlevel10k || true
 
 .PHONY: git
 git:
 	ln -fs `pwd`/git/gitconfig $(HOME)/.gitconfig
-
-.PHONY: vim
-vim:
-	rm -f ~/.vim
-	ln -fs `pwd`/vim ~/.vim
-	ln -fs `pwd`/vim/vimrc ~/.vimrc
 
 .PHONY: neovim
 neovim:
@@ -62,5 +58,5 @@ neovim:
 
 .PHONY: misc
 misc:
-	ln -fs `pwd`/tigrc $(HOME)/.tigrc
+	ln -fs `pwd`/tig/tigrc $(HOME)/.tigrc
 	mkdir -p $(HOME)/.ssh/tmp
