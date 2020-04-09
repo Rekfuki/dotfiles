@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH="/home/georgi/.oh-my-zsh"
+export ZSH="/home/rekfuki/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -8,7 +8,7 @@ export ZSH="/home/georgi/.oh-my-zsh"
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Update the list of identities so the ssh-agent plugin sets up the correct ones
-zstyle :omz:plugins:ssh-agent identities id_rsa hf_id_rsa
+zstyle :omz:plugins:ssh-agent identities id_rsa
 
 # Which plugins would you like to load?
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
@@ -42,10 +42,6 @@ export KEYTIMEOUT=1
 # Fix Ctrl+<key>
 stty -ixon
 
-# Set keyboard settings
-setxkbmap -layout us,bg -variant ,phonetic -option ctrl:nocaps grp:ctrl_alt_toggle
-setxkbmap -option altwin:swap_alt_win
-
 # Set the default umask
 umask 022
 
@@ -67,9 +63,15 @@ export REPOS=/repos
 # FZF settings
 export FZF_DEFAULT_OPTS="--layout=reverse --border --preview='[[ \$(file --mime {}) =~ binary ]] && echo {} is a binary file || (bat --style=numbers --color=always {} || head -100 {} || echo Preview not available) 2>/dev/null'"
 
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 # Golang
 export GOPATH=$REPOS/go
 export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
+export GOPRIVATE=git.ntteo.net,git.nflex.io
+
+# Rustlang
+export PATH=$PATH:~/.cargo/bin
 
 case "$OSTYPE" in
     darwin*)
@@ -112,3 +114,5 @@ bindkey "^[OB" down-line-or-beginning-search
 # allow home keys to search history in normal mode
 bindkey -M vicmd "k" up-line-or-beginning-search
 bindkey -M vicmd "j" down-line-or-beginning-search
+
+export PATH=$PATH:/repos/env/deploy:/repos/env/utils

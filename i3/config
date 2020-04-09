@@ -22,6 +22,7 @@ exec --no-startup-id i3-sensible-terminal
 exec --no-startup-id sensible-browser
 exec --no-startup-id slack
 exec --no-startup-id thunderbird
+exec --no-startup-id flameshot
 
 bindsym --release XF86Tools exec scrot -s
 bindsym --release Shift+XF86Tools exec scrot
@@ -159,3 +160,6 @@ bindsym XF86MonBrightnessUp exec --no-startup-id ~/dotfiles/i3/backlight.sh -dmo
 bindsym XF86MonBrightnessDown exec --no-startup-id ~/dotfiles/i3/backlight.sh -dmonitor -U10
 bindsym XF86KbdBrightnessUp exec --no-startup-id ~/dotfiles/i3/backlight.sh -dkeyboard -A20
 bindsym XF86KbdBrightnessDown exec --no-startup-id ~/dotfiles/i3/backlight.sh -dkeyboard -U20
+
+
+
