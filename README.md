@@ -1,4 +1,4 @@
-# Georgi's dotfiles
+# Rekfuki's dotfiles
 
 ## Installation
 
